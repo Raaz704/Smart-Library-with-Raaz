@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Admin | Book Requests</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="assets/css/admin-requests.css">
+  <style>
+    * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background: #0f172a;
+  color: #fff;
+  padding: 30px;
+}
+
+/* HEADER */
+.admin-header {
+  margin-bottom: 25px;
+}
+
+.admin-header h2 {
+  font-size: 28px;
+}
+
+.admin-header p {
+  color: #cbd5f5;
+}
+
+.back {
+  display: inline-block;
+  margin-top: 10px;
+  color: #38bdf8;
+  text-decoration: none;
+}
+
+/* TABLE */
+.table-box {
+  background: #020617;
+  padding: 25px;
+  border-radius: 16px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table th,
+table td {
+  padding: 12px;
+  text-align: left;
+}
+
+table tr {
+  border-bottom: 1px solid #1e293b;
+}
+
+/* STATUS */
+.status {
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+}
+
+.pending {
+  background: #facc15;
+  color: #000;
+}
+
+.approved {
+  background: #4ade80;
+  color: #000;
+}
+
+.rejected {
+  background: #f87171;
+  color: #000;
+}
+
+/* BUTTONS */
+button {
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-size: 12px;
+  margin-right: 5px;
+}
+
+.approve {
+  background: #22c55e;
+}
+
+.reject {
+  background: #ef4444;
+}
+
+  </style>
+</head>
+<body>
+
+<div class="admin-wrapper">
+
+  <!-- HEADER -->
+  <header class="admin-header">
+    <h2><i class="fa-solid fa-clipboard-check"></i> Book Issue Requests</h2>
+    <p>Approve or reject student book requests</p>
+    <a href="admin-dashboard.html" class="back">← Back to Dashboard</a>
+  </header>
+
+  <!-- REQUEST TABLE -->
+  <section class="table-box">
+    <table>
+      <thead>
+        <tr>
+          <th>Student</th>
+          <th>Book</th>
+          <th>Issue Date</th>
+          <th>Return Date</th>
+          <th>Status</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody id="requestTable">
+
+        <tr>
+          <td>Rahul Kumar</td>
+          <td>Database Management System</td>
+          <td>01 Aug 2025</td>
+          <td>10 Aug 2025</td>
+          <td><span class="status pending">Pending</span></td>
+          <td>
+            <button class="approve">Approve</button>
+            <button class="reject">Reject</button>
+          </td>
+        </tr>
+
+        <tr>
+          <td>Anjali Sharma</td>
+          <td>Computer Networks</td>
+          <td>05 Aug 2025</td>
+          <td>15 Aug 2025</td>
+          <td><span class="status pending">Pending</span></td>
+          <td>
+            <button class="approve">Approve</button>
+            <button class="reject">Reject</button>
+          </td>
+        </tr>
+
+      </tbody>
+    </table>
+  </section>
+
+</div>
+
+<script>document.addEventListener("DOMContentLoaded", () => {
+
+  const table = document.getElementById("requestTable");
+
+  table.addEventListener("click", function (e) {
+
+    if (e.target.classList.contains("approve")) {
+      const row = e.target.closest("tr");
+      const status = row.querySelector(".status");
+
+      status.innerText = "Approved";
+      status.className = "status approved";
+
+      e.target.remove();
+      row.querySelector(".reject").remove();
+    }
+
+    if (e.target.classList.contains("reject")) {
+      const row = e.target.closest("tr");
+      const status = row.querySelector(".status");
+
+      status.innerText = "Rejected";
+      status.className = "status rejected";
+
+      e.target.remove();
+      row.querySelector(".approve").remove();
+    }
+
+  });
+
+});
+</script>
+</body>
+</html>

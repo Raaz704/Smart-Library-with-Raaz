@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Features | Smart Library</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="public.css">
+</head>
+<body>
+
+<header class="site-header">
+  <h2 class="logo">
+    <a href="index.html" style="color:white; text-decoration:none;">
+      📚 Smart Library
+    </a>
+  </h2>
+
+  <!-- Hamburger -->
+  <div class="menu-toggle" id="menuToggle">
+    ☰
+  </div>
+
+  <nav id="navMenu">
+    <a href="index.html">Home</a>
+    <a  href="about.html">About</a>
+    <a class="active" href="features.html">Features</a>
+    <a href="contact.html">Contact</a>
+    <a class="btn" href="login.html">Login</a>
+  </nav>
+</header>
+
+
+<section class="hero">
+  <h1>Key Features</h1>
+  <p>Everything you need to manage a library digitally.</p>
+</section>
+
+<section class="content-grid">
+  <div class="card">
+    <h3>🔐 Secure Login</h3>
+    <p>Role-based login system for Admin and Students.</p>
+  </div>
+
+  <div class="card">
+    <h3>📚 Book Management</h3>
+    <p>Add, update, search, and manage books efficiently.</p>
+  </div>
+
+  <div class="card">
+    <h3>📝 Issue & Return</h3>
+    <p>Students can request books and admins can approve them.</p>
+  </div>
+
+  <div class="card">
+    <h3>📊 Dashboards</h3>
+    <p>Interactive dashboards for admin and student users.</p>
+  </div>
+
+  <div class="card">
+    <h3>👤 Profile Management</h3>
+    <p>Students can view and update their profile details.</p>
+  </div>
+
+  <div class="card">
+    <h3>⚡ Fast & Responsive</h3>
+    <p>Optimized UI that works smoothly on all devices.</p>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <p>© 2025 Smart Library Management System</p>
+</footer>
+<script>
+  const menuToggle = document.getElementById("menuToggle");
+  const navMenu = document.getElementById("navMenu");
+
+  menuToggle.addEventListener("click", () => {
+    navMenu.classList.toggle("show");
+  });
+</script>
+
+</body>
+</html>

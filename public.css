@@ -1,0 +1,134 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background: radial-gradient(circle at top, #7c3aed, #1e1b4b);
+  color: #fff;
+}
+
+/* HEADER */
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 60px;
+}
+
+.site-header nav a {
+  color: #fff;
+  margin-left: 20px;
+  text-decoration: none;
+}
+
+.site-header nav a.active {
+  border-bottom: 2px solid #a78bfa;
+}
+
+.site-header .btn {
+  background: #a78bfa;
+  padding: 6px 14px;
+  border-radius: 20px;
+  color: #1e1b4b;
+}
+
+/* HERO */
+.hero {
+  text-align: center;
+  padding: 60px 20px;
+}
+
+/* GRID */
+.content-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px,1fr));
+  gap: 25px;
+  padding: 40px 60px;
+}
+
+.card {
+  background: rgba(255,255,255,0.12);
+  backdrop-filter: blur(15px);
+  padding: 25px;
+  border-radius: 16px;
+}
+
+/* CONTACT */
+.contact-box {
+  max-width: 450px;
+  margin: auto;
+  padding: 40px;
+}
+
+.contact-box input,
+.contact-box textarea {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border-radius: 10px;
+  border: none;
+}
+
+.contact-box button {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
+  background: #a78bfa;
+  font-weight: 600;
+}
+
+/* FOOTER */
+.site-footer {
+  text-align: center;
+  padding: 20px;
+  color: #cbd5f5;
+}
+
+
+/* =========================
+   RESPONSIVE HEADER
+========================= */
+
+.menu-toggle {
+  display: none;
+  font-size: 26px;
+  cursor: pointer;
+}
+
+/* Tablet & Mobile */
+@media (max-width: 768px) {
+
+  .site-header {
+    padding: 16px 20px;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .site-header nav {
+    position: absolute;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    background: #1e1b4b;
+    flex-direction: column;
+    align-items: center;
+    display: none;
+    padding: 20px 0;
+    z-index: 1000;
+  }
+
+  .site-header nav a {
+    margin: 12px 0;
+    font-size: 16px;
+  }
+
+  .site-header nav.show {
+    display: flex;
+  }
+}

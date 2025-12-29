@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Auth | Smart Library</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(circle at top, #7c3aed, #1e1b4b);
+    }
+
+    .login-box {
+      width: 420px;
+      padding: 50px 40px;
+      background: rgba(255,255,255,0.12);
+      backdrop-filter: blur(20px);
+      border-radius: 28px;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 35px 80px rgba(0,0,0,0.45);
+    }
+
+    /* BORDER OVERLAY FIX */
+    .login-box::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 28px;
+      padding: 1px;
+      background: linear-gradient(135deg, #c084fc, #60a5fa);
+      -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      pointer-events: none;
+    }
+
+    .login-icon {
+      width: 75px;
+      height: 75px;
+      background: linear-gradient(135deg, #a78bfa, #60a5fa);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: -90px auto 20px;
+      font-size: 30px;
+      color: #1e1b4b;
+    }
+
+    h2 {
+      color: #fff;
+    }
+
+    .login-sub {
+      font-size: 14px;
+      color: #e5e7eb;
+      margin-bottom: 25px;
+    }
+
+    .auth-tabs {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 15px;
+    }
+
+    .auth-tabs button {
+      flex: 1;
+      padding: 10px;
+      border-radius: 30px;
+      border: 1px solid rgba(255,255,255,0.3);
+      background: rgba(255,255,255,0.12);
+      color: #fff;
+      cursor: pointer;
+    }
+
+    .auth-tabs .active {
+      background: linear-gradient(135deg, #a78bfa, #60a5fa);
+      color: #1e1b4b;
+      font-weight: 600;
+    }
+
+    .form-message {
+      min-height: 20px;
+      margin-bottom: 15px;
+      font-size: 14px;
+    }
+
+    .input-box {
+      position: relative;
+      margin-bottom: 22px;
+    }
+
+    .input-box input {
+      width: 100%;
+      padding: 13px 45px;
+      border-radius: 30px;
+      border: none;
+      outline: none;
+    }
+
+    .input-box i {
+      position: absolute;
+      top: 50%;
+      left: 16px;
+      transform: translateY(-50%);
+      color: #4c1d95;
+    }
+
+    .input-box label {
+      position: absolute;
+      top: 50%;
+      left: 45px;
+      transform: translateY(-50%);
+      pointer-events: none;
+      transition: 0.3s;
+      color: #6b7280;
+    }
+
+    .input-box input:focus + label,
+    .input-box input:not(:placeholder-shown) + label {
+      top: -8px;
+      font-size: 12px;
+      color: #fff;
+    }
+
+    .btn {
+      width: 100%;
+      padding: 12px;
+      border-radius: 30px;
+      border: none;
+      background: linear-gradient(135deg, #a78bfa, #60a5fa);
+      color: #1e1b4b;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      display: block;
+    }
+
+    /* BACK TO HOME */
+    .back-btn {
+      margin-top: 12px;
+      background: transparent;
+      border: 2px solid #a78bfa;
+      color: #a78bfa;
+    }
+
+    .back-btn:hover {
+      background: #a78bfa;
+      color: #1e1b4b;
+    }
+  </style>
+</head>
+<body>
+
+<div class="login-box">
+
+  <div class="login-icon">
+    <i class="fa-solid fa-book-open"></i>
+  </div>
+
+  <h2 id="formTitle">Welcome Back</h2>
+  <p class="login-sub" id="formSub">Login to Smart Library System</p>
+
+  <div class="auth-tabs">
+    <button id="loginTab" class="active">Login</button>
+    <button id="signupTab">Sign Up</button>
+  </div>
+
+  <p id="formMessage" class="form-message"></p>
+
+  <!-- LOGIN FORM -->
+  <form id="loginForm">
+    <div class="input-box">
+      <i class="fa-solid fa-envelope"></i>
+      <input type="email" id="loginEmail" required>
+      <label>Email</label>
+    </div>
+
+    <div class="input-box">
+      <i class="fa-solid fa-lock"></i>
+      <input type="password" id="loginPassword" required>
+      <label>Password</label>
+    </div>
+
+    <button class="btn" type="submit">Login</button>
+    <a href="index.html" class="btn back-btn">← Back to Home</a>
+  </form>
+
+  <!-- SIGNUP FORM -->
+  <form id="signupForm" style="display:none;">
+    <div class="input-box">
+      <i class="fa-solid fa-user"></i>
+      <input type="text" id="signupName" required>
+      <label>Full Name</label>
+    </div>
+
+    <div class="input-box">
+      <i class="fa-solid fa-envelope"></i>
+      <input type="email" id="signupEmail" required>
+      <label>Email</label>
+    </div>
+
+    <div class="input-box">
+      <i class="fa-solid fa-lock"></i>
+      <input type="password" id="signupPassword" required>
+      <label>Password</label>
+    </div>
+
+    <button class="btn" type="submit">Create Account</button>
+    <a href="index.html" class="btn back-btn">← Back to Home</a>
+  </form>
+
+</div>
+
+<script>
+  const loginTab = document.getElementById("loginTab");
+  const signupTab = document.getElementById("signupTab");
+  const loginForm = document.getElementById("loginForm");
+  const signupForm = document.getElementById("signupForm");
+  const msg = document.getElementById("formMessage");
+  const title = document.getElementById("formTitle");
+  const sub = document.getElementById("formSub");
+
+  loginTab.onclick = () => {
+    loginTab.classList.add("active");
+    signupTab.classList.remove("active");
+    loginForm.style.display = "block";
+    signupForm.style.display = "none";
+    title.innerText = "Welcome Back";
+    sub.innerText = "Login to Smart Library System";
+    msg.innerText = "";
+  };
+
+  signupTab.onclick = () => {
+    signupTab.classList.add("active");
+    loginTab.classList.remove("active");
+    signupForm.style.display = "block";
+    loginForm.style.display = "none";
+    title.innerText = "Create Account";
+    sub.innerText = "Register for Smart Library System";
+    msg.innerText = "";
+  };
+
+  loginForm.onsubmit = (e) => {
+    e.preventDefault();
+
+    const email = loginEmail.value.trim();
+    const pass = loginPassword.value.trim();
+
+    if (!email || !pass) {
+      msg.style.color = "yellow";
+      msg.innerText = "⚠️ Please fill all fields";
+      return;
+    }
+
+    localStorage.setItem("studentName", email.split("@")[0]);
+    localStorage.setItem("studentEmail", email);
+
+    msg.style.color = "#86efac";
+    msg.innerText = "✅ Login successful";
+
+    if (email.includes("admin")) {
+      window.location.href = "admin-dashboard.html";
+    } else {
+      window.location.href = "student-dashboard.html";
+    }
+  };
+
+  signupForm.onsubmit = (e) => {
+    e.preventDefault();
+
+    const name = signupName.value.trim();
+    const email = signupEmail.value.trim();
+
+    if (!name || !email) {
+      msg.style.color = "yellow";
+      msg.innerText = "⚠️ Please fill all fields";
+      return;
+    }
+
+    localStorage.setItem("studentName", name);
+    localStorage.setItem("studentEmail", email);
+
+    msg.style.color = "#86efac";
+    msg.innerText = "🎉 Account created successfully";
+
+    setTimeout(() => {
+      window.location.href = "student-dashboard.html";
+    }, 800);
+  };
+</script>
+
+</body>
+</html>

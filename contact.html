@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Contact Us | Smart Library</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="public.css">
+
+  <style>
+    .error {
+      color: #facc15;
+      font-size: 14px;
+      margin-top: 10px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <h2 class="logo">
+    <a href="index.html" style="color:white; text-decoration:none;">
+      📚 Smart Library
+    </a>
+  </h2>
+
+  <!-- Hamburger -->
+  <div class="menu-toggle" id="menuToggle">
+    ☰
+  </div>
+
+  <nav id="navMenu">
+    <a href="index.html">Home</a>
+    <a  href="about.html">About</a>
+    <a href="features.html">Features</a>
+    <a class="active" href="contact.html">Contact</a>
+    <a class="btn" href="login.html">Login</a>
+  </nav>
+</header>
+
+
+<section class="hero">
+  <h1>Contact Us</h1>
+  <p>Have a question? We are here to help.</p>
+</section>
+
+<section class="contact-box">
+  <form id="contactForm">
+
+    <input type="text" id="name" placeholder="Your Name">
+    <input type="email" id="email" placeholder="Your Email">
+    <textarea id="message" placeholder="Your Message"></textarea>
+
+    <button type="submit">Send Message</button>
+
+    <p id="errorMsg" class="error"></p>
+  </form>
+</section>
+
+<footer class="site-footer">
+  <p>© 2025 Smart Library Management System</p>
+</footer>
+
+<script>
+  document.getElementById("contactForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const message = document.getElementById("message").value.trim();
+    const error = document.getElementById("errorMsg");
+
+    if (name === "" || email === "" || message === "") {
+      error.innerText = "⚠️ Please fill all fields before submitting.";
+      return;
+    }
+
+    // simple email check
+    if (!email.includes("@")) {
+      error.innerText = "⚠️ Please enter a valid email address.";
+      return;
+    }
+
+    // clear error
+    error.innerText = "";
+
+    // 🔥 redirect to thank you page
+    window.location.href = "thankyou.html";
+  });
+</script>
+<script>
+  const menuToggle = document.getElementById("menuToggle");
+  const navMenu = document.getElementById("navMenu");
+
+  menuToggle.addEventListener("click", () => {
+    navMenu.classList.toggle("show");
+  });
+</script>
+
+</body>
+</html>

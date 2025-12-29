@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Issue Book | Smart Library</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/all.min.css">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="assets/css/issue-book.css">
+  <style>
+    * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background: #0f172a;
+  color: #fff;
+  padding: 30px;
+}
+
+/* HEADER */
+.issue-header {
+  margin-bottom: 25px;
+}
+
+.issue-header h2 {
+  font-size: 28px;
+}
+
+.issue-header p {
+  color: #cbd5f5;
+}
+
+/* FORM CARD */
+.issue-card {
+  max-width: 450px;
+  background: #020617;
+  padding: 30px;
+  border-radius: 16px;
+  margin-bottom: 40px;
+}
+
+/* FORM */
+.form-group {
+  margin-bottom: 18px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 6px;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+}
+
+/* BUTTON */
+.btn {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
+  background: #22c55e;
+  color: #000;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn:hover {
+  opacity: 0.9;
+}
+
+/* MESSAGE */
+#issueMsg {
+  margin-top: 12px;
+  font-size: 14px;
+}
+
+/* STATUS TABLE */
+.status-box {
+  background: #020617;
+  padding: 25px;
+  border-radius: 16px;
+}
+
+.status-box h3 {
+  margin-bottom: 15px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table th,
+table td {
+  padding: 12px;
+  text-align: left;
+}
+
+table tr {
+  border-bottom: 1px solid #1e293b;
+}
+
+/* STATUS */
+.status {
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+}
+
+.pending {
+  background: #facc15;
+  color: #000;
+}
+
+.approved {
+  background: #4ade80;
+  color: #000;
+}
+
+  </style>
+</head>
+<body>
+
+<div class="issue-wrapper">
+<a href="student-dashboard.html" style="color:#38bdf8;">← Back to Dashboard</a>
+
+  <!-- HEADER -->
+  <header class="issue-header">
+    <h2><i class="fa-solid fa-book-open"></i> Issue Book Request</h2>
+    <p>Request a book from the library</p>
+  </header>
+
+  <!-- FORM CARD -->
+  <section class="issue-card">
+
+    <form id="issueForm">
+
+      <div class="form-group">
+        <label>Select Book</label>
+        <select id="bookName">
+          <option value="">-- Choose Book --</option>
+          <option>Database Management System</option>
+          <option>Computer Networks</option>
+          <option>Java Programming</option>
+          <option>Python Basics</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Issue Date</label>
+        <input type="date" id="issueDate">
+      </div>
+
+      <div class="form-group">
+        <label>Return Date</label>
+        <input type="date" id="returnDate">
+      </div>
+
+      <button type="submit" class="btn">Submit Request</button>
+
+      <p id="issueMsg"></p>
+    </form>
+
+  </section>
+
+  <!-- REQUEST STATUS -->
+  <section class="status-box">
+    <h3>My Requests</h3>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Book</th>
+          <th>Issue Date</th>
+          <th>Return Date</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody id="requestTable">
+        <tr>
+          <td>Database Management System</td>
+          <td>01 Aug 2025</td>
+          <td>10 Aug 2025</td>
+          <td><span class="status pending">Pending</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+</div>
+
+<script>
+    document.getElementById("issueForm").addEventListener("submit", function (e) {
+  e.preventDefault();
+
+  const book = document.getElementById("bookName").value;
+  const issueDate = document.getElementById("issueDate").value;
+  const returnDate = document.getElementById("returnDate").value;
+  const msg = document.getElementById("issueMsg");
+  const table = document.getElementById("requestTable");
+
+  if (book === "" || issueDate === "" || returnDate === "") {
+    msg.style.color = "yellow";
+    msg.innerText = "⚠️ Please fill all fields";
+    return;
+  }
+
+  msg.style.color = "#4ade80";
+  msg.innerText = "✅ Book request submitted (Pending approval)";
+
+  const row = document.createElement("tr");
+  row.innerHTML = `
+    <td>${book}</td>
+    <td>${issueDate}</td>
+    <td>${returnDate}</td>
+    <td><span class="status pending">Pending</span></td>
+  `;
+
+  table.appendChild(row);
+  this.reset();
+});
+
+</script>
+</body>
+</html>

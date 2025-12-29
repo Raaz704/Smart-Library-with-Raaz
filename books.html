@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Books | Smart Library</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="assets/css/books.css">
+  <style>
+    * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background: #0f172a;
+  color: #fff;
+  padding: 30px;
+}
+
+/* HEADER */
+.page-header {
+  margin-bottom: 25px;
+}
+
+.page-header h2 {
+  font-size: 28px;
+}
+
+.page-header p {
+  color: #cbd5f5;
+}
+
+/* FILTERS */
+.filters {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.filters input,
+.filters select {
+  padding: 12px 15px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  min-width: 220px;
+}
+
+/* GRID */
+.books-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 20px;
+}
+
+/* CARD */
+.book-card {
+  display: block;
+  background: #020617;
+  padding: 22px;
+  border-radius: 16px;
+  transition: 0.3s;
+  position: relative;
+}
+
+.book-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+}
+
+.book-card h3 {
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+.book-card p {
+  color: #cbd5f5;
+  font-size: 14px;
+}
+
+/* TAG */
+.tag {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+}
+
+.available {
+  background: #4ade80;
+  color: #000;
+}
+
+.issued {
+  background: #facc15;
+  color: #000;
+}
+
+  </style>
+</head>
+<body>
+    <a href="student-dashboard.html" style="color:#38bdf8;">← Back to Dashboard</a>
+
+
+<!-- HEADER -->
+<header class="page-header">
+  <h2><i class="fa-solid fa-book"></i> Library Books</h2>
+  <p>Search and filter library books</p>
+</header>
+
+<!-- FILTERS -->
+<section class="filters">
+  <input
+    type="text"
+    id="searchInput"
+    placeholder="🔍 Search by book name..."
+  >
+
+  <select id="categoryFilter">
+    <option value="all">All Categories</option>
+    <option value="Programming">Programming</option>
+    <option value="Database">Database</option>
+    <option value="Networking">Networking</option>
+  </select>
+</section>
+
+<!-- BOOKS GRID -->
+<section class="books-grid" id="booksGrid">
+
+  <div class="book-card" data-category="Programming">
+    <h3>Java Programming</h3>
+    <p>Author: James Gosling</p>
+    <span class="tag available">Available</span>
+  </div>
+
+  <div class="book-card" data-category="Database">
+    <h3>Database Management System</h3>
+    <p>Author: Elmasri</p>
+    <span class="tag issued">Issued</span>
+  </div>
+
+  <div class="book-card" data-category="Networking">
+    <h3>Computer Networks</h3>
+    <p>Author: Andrew S. Tanenbaum</p>
+    <span class="tag available">Available</span>
+  </div>
+
+  <div class="book-card" data-category="Programming">
+    <h3>Python Basics</h3>
+    <p>Author: Guido van Rossum</p>
+    <span class="tag available">Available</span>
+  </div>
+
+  <div class="book-card" data-category="Database">
+    <h3>SQL & PL/SQL</h3>
+    <p>Author: Ivan Bayross</p>
+    <span class="tag issued">Issued</span>
+  </div>
+
+</section>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+
+  const searchInput = document.getElementById("searchInput");
+  const categoryFilter = document.getElementById("categoryFilter");
+  const books = document.querySelectorAll(".book-card");
+
+  function filterBooks() {
+    const searchValue = searchInput.value.toLowerCase().trim();
+    const categoryValue = categoryFilter.value;
+
+    books.forEach(book => {
+      const title = book.querySelector("h3").innerText.toLowerCase();
+      const category = book.getAttribute("data-category");
+
+      const matchSearch = title.includes(searchValue);
+      const matchCategory =
+        categoryValue === "all" || category === categoryValue;
+
+      if (matchSearch && matchCategory) {
+        book.style.display = "";
+      } else {
+        book.style.display = "none";
+      }
+    });
+  }
+
+  searchInput.addEventListener("keyup", filterBooks);
+  categoryFilter.addEventListener("change", filterBooks);
+
+});
+
+</script>
+</body>
+</html>
