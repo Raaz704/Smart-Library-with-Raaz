@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Smart Library Management System</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #1e1b4b, #4c1d95);
+      color: #fff;
+    }
+
+    /* HEADER */
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 8%;
+  position: relative;
+}
+
+.logo {
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.site-header nav {
+  display: flex;
+  align-items: center;
+}
+
+.site-header nav a {
+  margin-left: 22px;
+  color: #fff;
+  text-decoration: none;
+}
+
+.site-header .btn {
+  background: #a78bfa;
+  color: #1e1b4b;
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-weight: 600;
+}
+
+/* HAMBURGER */
+.menu-toggle {
+  display: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+/* 🔥 MOBILE & TABLET */
+@media (max-width: 768px) {
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .site-header nav {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: #1e1b4b;
+    flex-direction: column;
+    display: none;
+    padding: 20px 0;
+  }
+
+  .site-header nav.active {
+    display: flex;
+  }
+
+  .site-header nav a {
+    margin: 12px 0;
+    font-size: 16px;
+  }
+ 
+}
+
+
+    header {
+      padding: 20px 8%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header nav a {
+      margin-left: 25px;
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .btn {
+      background: #fff;
+      color: #4c1d95;
+      padding: 8px 22px;
+      border-radius: 25px;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 90vh;
+      display: flex;
+      align-items: center;
+      padding: 0 8%;
+      
+    }
+
+    .hero h1 {
+      font-size: 54px;
+      line-height: 1.2;
+      padding-right: 15px;
+
+    }
+
+    .hero p {
+      margin: 25px 0;
+      font-size: 18px;
+      color: #e5e7eb;
+      max-width: 600px;
+      padding-right: 15px;
+
+    }
+
+    /* HIGHLIGHTS */
+    .highlights {
+      padding: 80px 8%;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px,1fr));
+      gap: 30px;
+      background: rgba(255,255,255,0.05);
+    }
+
+    .highlight-box {
+      background: rgba(255,255,255,0.08);
+      padding: 30px;
+      border-radius: 20px;
+    }
+
+    .highlight-box i {
+      font-size: 34px;
+      color: #c4b5fd;
+      margin-bottom: 15px;
+    }
+
+    /* CTA */
+    .cta {
+      text-align: center;
+      padding: 90px 20px;
+    }
+
+    .cta h2 {
+      font-size: 38px;
+      margin-bottom: 20px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      color: #d1d5db;
+      font-size: 14px;
+    }
+
+    /* 📱 TABLET VIEW ONLY */
+@media (min-width: 765px) and (max-width: 1024px) {
+  .hero {
+    min-height: 65vh;
+  }
+}
+
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+ <a href="index.html" style="color: white; text-decoration: none;"> <div class="logo">📚 SmartLibrary</div></a>
+
+  <!-- HAMBURGER -->
+  <div class="menu-toggle" id="menuToggle">
+    <i class="fa-solid fa-bars"></i>
+  </div>
+
+  <nav id="navMenu">
+    <a class="active" href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="features.html">Features</a>
+    <a href="contact.html">Contact</a>
+    <a href="login.html" class="btn">Login</a>
+  </nav>
+</header>
+
+
+<!-- HERO -->
+<section class="hero">
+  <div>
+    <h1>Modern Library <br> Management System</h1>
+    <p>
+      Smart Library is a web-based system designed to automate library
+      operations, manage books efficiently, and enhance the student experience.
+    </p>
+    <a href="features.html" class="btn">Explore Features</a>
+  </div>
+</section>
+
+<!-- QUICK HIGHLIGHTS -->
+<section class="highlights">
+  <div class="highlight-box">
+    <i class="fa-solid fa-book"></i>
+    <h3>Digital Library</h3>
+    <p>Paperless management of books and records.</p>
+  </div>
+
+  <div class="highlight-box">
+    <i class="fa-solid fa-user-graduate"></i>
+    <h3>Student Friendly</h3>
+    <p>Easy access to books, requests, and profile.</p>
+  </div>
+
+  <div class="highlight-box">
+    <i class="fa-solid fa-user-shield"></i>
+    <h3>Admin Control</h3>
+    <p>Complete control over books and approvals.</p>
+  </div>
+
+  <div class="highlight-box">
+    <i class="fa-solid fa-chart-column"></i>
+    <h3>Analytics Ready</h3>
+    <p>Visual dashboards for monitoring library usage.</p>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <h2>Ready to Experience Smart Library?</h2>
+  <a href="login.html" class="btn">Get Started</a>
+</section>
+
+<footer>
+  © 2025 Smart Library Management System
+</footer>
+<script>
+  const toggle = document.getElementById("menuToggle");
+  const nav = document.getElementById("navMenu");
+
+  toggle.addEventListener("click", () => {
+    nav.classList.toggle("active");
+  });
+</script>
+
+</body>
+</html>
